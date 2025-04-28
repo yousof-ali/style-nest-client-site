@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { RiAccountCircleLine, RiLockPasswordLine } from "react-icons/ri";
 import { MdOutlineMail } from "react-icons/md";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
@@ -9,17 +9,37 @@ import { useForm } from 'react-hook-form';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import SocialLogin from './SocialLogin';
+import { AuthContext } from '../../ContextAPI/AuthProvider'
+import { FiLoader } from "react-icons/fi";
 
 const SignUp = () => {
+    const { createUserWithEmail } = useContext(AuthContext);
+
     const [showPass, setShowPass] = useState(false);
     const [progress, setProgress] = useState(0);
+    const [btnLoader, setBtnLoader] = useState(false);
+    const [err, setError] = useState('');
 
     const handleShowPass = () => setShowPass(!showPass);
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
+        setBtnLoader(true);
+        setError('');
+        createUserWithEmail(data.email, data.password)
+            .then(res => {
+                console.log(res.user)
+                setBtnLoader(false);
+            })
+            .catch((err) => {
+                if (err.message.includes("email-already-in-use")) {
+                    setError('Email is already in use.');
+                    setProgress(prevProgress => prevProgress - 33);
+                    setBtnLoader(false);
+                }
+                setBtnLoader(false);
+            })
     }
 
     const fullname = watch('fullname');
@@ -116,12 +136,16 @@ const SignUp = () => {
                         </div>
                     </div>
 
+                    {
+                        err && <p className='text-sm font-light text-red-400'>{err}</p>
+                    }
+
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-md transition duration-300"
+                        className="w-full gap-2 flex justify-center items-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-md transition duration-300"
                     >
-                        Sign Up
+                        {btnLoader && <FiLoader className="text-2xl animate-spin  text-white" />}Sign Up
                     </button>
                 </form>
                 <div className='px-8 mb-8'>

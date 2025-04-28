@@ -24,6 +24,14 @@ const Header = () => {
                     Collections
                 </NavLink>
             </li>
+            <li>
+                <NavLink
+                    to="/login"
+                    className="relative before:absolute before:bottom-[-2px] before:left-0 before:h-[2px] before:w-0 before:bg-[#a6e3b4] before:transition-all before:duration-300 hover:before:w-full capitalize"
+                >
+                    Log In
+                </NavLink>
+            </li>
         </>
     );
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdOutlineMail } from "react-icons/md";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
@@ -10,26 +10,47 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import ReCAPTCHA from 'react-google-recaptcha';
 import SocialLogin from './SocialLogin';
+import './Login.css'
+import { AuthContext } from '../../ContextAPI/AuthProvider';
+import { FiLoader } from 'react-icons/fi';
 
 
 
 const Login = () => {
+    const {loginUserWithEmail} = useContext(AuthContext);
     const [showPass, setShowPass] = useState(false);
-    const [captchaToken,setCaptchaToken] = useState(null)
+    const [btnLoader,setBtnLoader] = useState(false);
+    const [err,setError] = useState('')
+    const [captchaToken, setCaptchaToken] = useState(null)
 
     const handleShowPass = () => setShowPass(!showPass);
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
+        setBtnLoader(true);
+        setError('');
+        loginUserWithEmail(data.email,data.password)
+        .then(res => {
+            console.log(res.user)
+            setBtnLoader(false);
+        })
+        .catch((err) => {
+            setError('Invalid Email or Password!');
+            console.log(err.message);
+            setBtnLoader(false);
+        })
     }
 
     const handleCaptchaChange = (token) => {
         setCaptchaToken(token)
     }
 
+    const handleForgatePass = () => {}
+
     AOS.init();
+
+    console.log(errors);
 
 
     return (
@@ -86,22 +107,30 @@ const Login = () => {
                         >
                             {showPass ? <FaRegEyeSlash /> : <FaRegEye />}
                         </div>
+                        <p onClick={handleForgatePass} className='font-light border-0 cursor-pointer m-0 p-0 btn btn-link text-gray-500'>Forgate password?</p>
                     </div>
 
-                    <div className="flex justify-center">
+                    
+
+                    {/* ReCAPTCHA */}
+                    <div className="flex justify-center w-full mt-4 recaptcha-container">
                         <ReCAPTCHA
                             sitekey={import.meta.env.VITE_SITE_KEY}
                             onChange={handleCaptchaChange}
+                            className="w-full sm:w-auto"
                         />
                     </div>
 
                     {/* Submit Button */}
+                    {
+                        err && <p className='text-sm font-light text-red-400'>{err}</p>
+                    }
                     <button
                         disabled={!captchaToken}
                         type="submit"
                         className="w-full btn bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-md transition duration-300"
                     >
-                        Log In
+                       {btnLoader && <FiLoader className="text-2xl animate-spin  text-white" />}Log In
                     </button>
                 </form>
                 <div className='px-8 mb-8'>
