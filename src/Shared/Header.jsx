@@ -1,43 +1,87 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { CiSearch } from "react-icons/ci";
+import './Header.css'
+import { HiOutlineShoppingBag } from "react-icons/hi2";
+
 
 const Header = () => {
-    const links = <>
-        <li>
-            <NavLink to={'/'}>Home</NavLink>
-        </li>
-        <li>
-            <NavLink to={'/collections'}>Collections</NavLink>
-        </li>
+    const links = (
+        <>
+            <li>
+                <NavLink
+                    to="/"
+                    className="relative  before:absolute before:bottom-[-2px] before:left-0 before:h-[2px] before:w-0 before:bg-[#a6e3b4] before:transition-all before:duration-300 hover:before:w-full capitalize"
+                >
+                    Home
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="/collections"
+                    className="relative before:absolute before:bottom-[-2px] before:left-0 before:h-[2px] before:w-0 before:bg-[#a6e3b4] before:transition-all before:duration-300 hover:before:w-full capitalize"
+                >
+                    Collections
+                </NavLink>
+            </li>
+        </>
+    );
 
-    </>
     return (
-        <div className="navbar lg:p-8 lg:px-12  bg-base-100 ">
+        <div className="navbar lg:p-4 lg:px-12 shadow bg-base-100">
             <div className="navbar-start">
                 <div className="dropdown">
-                    <ul className="menu hidden lg:flex menu-horizontal px-1">
-                        {links}
-                    </ul>
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
                     </div>
-                    <ul
-                        tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                    <ul tabIndex={0} className="menu menu-sm  font-bold dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         {links}
+                        <Link >
+                        <div className=" flex items-center gap-1">
+                            <span className='text-xl'><HiOutlineShoppingBag /></span>
+                            <p>My Cart</p>
+                            <p className='bg-pink-400 text-white rounded-full p-1'>+0</p>
+                            
+                        </div>
+
+                    </Link>
                     </ul>
                 </div>
-                <a className="btn md:hidden btn-ghost text-xl">StyleNest</a>
+                <div className="navbar-start hidden lg:flex">
+                    <ul className=" flex gap-6 font-semibold  px-1">
+                        {links}
+                        
+                    </ul>
+                </div>
+                <a className="cursor-pointer normal-case text-xl md:hidden">
+                    <img src="/logo.png" className="w-44" alt="logo" />
+                </a>
             </div>
-            <a className="btn hidden md:flex btn-ghost text-xl">dgdg</a>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu lg:hidden menu-horizontal px-1">
-                    {links}
-                </ul>
-                
-            </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
+            <a className="hidden cursor-pointer md:flex  normal-case text-xl">
+                <img src="/logo.png" className="w-44" alt="logo" />
+            </a>
+            <div className="navbar-end gap-6 lg:gap-6">
+                <div className=''>
+                    <Link><span className='flex items-center gap-2'><span className='text-xl'><CiSearch /></span> Search
+                    </span></Link>
+                </div>
+                <div className='hidden  lg:flex'>
+                    <Link >
+                        <div className=" flex items-center gap-1">
+                            <span className='text-xl'><HiOutlineShoppingBag /></span>
+                            <p>My Cart</p>
+                            <p className='bg-pink-400 text-white rounded-full p-1'>+0</p>
+                            
+                        </div>
+
+                    </Link>
+                </div>
+                <div>
+                    <Link to={'/sign-up'}><button class="btn btn-outline hover:text-white btn-success rounded-full">Sign Up</button></Link>
+                </div>
+
             </div>
         </div>
     );

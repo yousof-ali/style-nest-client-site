@@ -3,6 +3,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import Root from '../Layout/Root';
 import Home from '../Pages/Home/Home';
 import Collentions from '../Pages/Collections/Collentions';
+import SignUp from '../Pages/Authentication/SignUp'
+import Login from '../Pages/Authentication/Login'
 
 const router = createBrowserRouter([
     {
@@ -17,6 +19,14 @@ const router = createBrowserRouter([
             {
                 path:'/collections',
                 element:<Collentions></Collentions>
+            },
+            {
+                path:'/sign-up',
+                element:<SignUp></SignUp>
+            },
+            {
+                path:'/login',
+                element:<Login></Login>
             }
         ]
 
