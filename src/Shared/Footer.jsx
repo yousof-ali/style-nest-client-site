@@ -27,7 +27,7 @@ const Footer = () => {
               <div className='mt-16 grid grid-cols-1 lg:gap-0 gap-8 md:grid-cols-2  lg:grid-cols-4 '>
                 <div>
                     <h2 className='text-xl font-semibold  mb-3'>ABOUT US</h2>
-                    <div className='flex flex-col space-y-1'>
+                    <div className='flex flex-col space-y-1 text-gray-500'>
                     <span ><Link>About Us</Link></span>
                     <span ><Link>Contact Us</Link></span>
                     <span ><Link>Factoris</Link></span>
@@ -37,7 +37,7 @@ const Footer = () => {
                 </div>
                 <div className='md:text-right lg:text-left '>
                     <h2 className='text-xl font-semibold mb-3'>MY ACCOUNT</h2>
-                    <div className='flex flex-col space-y-1'>
+                    <div className='flex flex-col space-y-1 text-gray-500'>
                     <span ><Link>My Account</Link></span>
                     <span ><Link>My Wishlist</Link></span>
                     <span ><Link>My Cart</Link></span>
@@ -47,7 +47,7 @@ const Footer = () => {
                 </div>
                 <div>
                     <h2 className='text-xl font-semibold mb-3'>ORDERS AND RETURNS</h2>
-                    <div className='flex flex-col space-y-1'>
+                    <div className='flex flex-col space-y-1 text-gray-500'>
                     <span ><Link>Help and advice</Link></span>
                     <span ><Link>Shippintg & Returns
                     t</Link></span>
@@ -68,7 +68,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className='divider divider-accent py-4'></div>
+            <div className='divider  py-4'></div>
             <p className='text-center text-sm text-gray-500'>Copyright © 2021 StyleNest.</p>
         </div>
     );
