@@ -1,0 +1,79 @@
+[
+    {
+      "id": 1,
+      "name": "Classic shirt with pocket",
+      "category": "men",
+      "price": 29.99,
+      "rating": 4.3,
+      "sizes": ["S", "M", "L", "XL"],
+      "brand": "Urban Threads",
+      "description": "Captivate with this shirt’s versatile urban look that works as well at happy hour as it does in the back yard. The real mother of pearl buttons and embroidered crocodile...",
+      "images": [
+        "https://i.ibb.co.com/dJbQJmkr/p1.webp",
+        "https://i.ibb.co.com/XfLMLGb7/p2.webp"
+      ],
+      "in_stock": true
+    },
+    {
+      "id": 2,
+      "name": "Lightweight fitted jumper",
+      "category": "women",
+      "price": 49.95,
+      "rating": 4.7,
+      "sizes": ["XS", "S", "M", "L"],
+      "brand": "Flare & Bloom",
+      "description": "Captivate with this shirt’s versatile urban look that works as well at happy hour as it does in the back yard. The real mother of pearl buttons and embroidered crocodile...",
+      "images": [
+        "https://i.ibb.co.com/hJRKCmDp/p3.webp",
+        "https://i.ibb.co.com/Q703QJr3/p4.webp"
+      ],
+      "in_stock": true
+    },
+    {
+      "id": 3,
+      "name": "Sherpa denim jacket",
+      "category": "men",
+      "price": 19.99,
+      "rating": 4.5,
+      "sizes": ["2T", "3T", "4T", "5T"],
+      "brand": "HappyKid",
+      "description": "Captivate with this shirt’s versatile urban look that works as well at happy hour as it does in the back yard. The real mother of pearl buttons and embroidered crocodile...",
+      "images": [
+        "https://i.ibb.co.com/KjNLvb5k/p5.webp",
+        "https://i.ibb.co.com/N6D2gDMG/p6.webp"
+      ],
+      "in_stock": false
+    },
+    {
+      "id": 4,
+      "name": "Basic sweat joggers",
+      "category": "women",
+      "price": 35.50,
+      "rating": 4.0,
+      "sizes": ["M", "L", "XL"],
+      "brand": "RunGear",
+      "description": "Comfortable joggers for running or everyday wear.",
+      "images": [
+        "https://i.ibb.co.com/7Jszsc5d/p7.webp",
+        "https://i.ibb.co.com/mrmGnxxF/p8.webp"
+      ],
+      "in_stock": true
+    },
+    {
+      "id": 5,
+      "name": "Pocketed denim jacket",
+      "category": "men",
+      "price": 24.99,
+      "rating": 4.6,
+      "sizes": ["S", "M", "L", "XL"],
+      "brand": "Athletique",
+      "description": "Stretchy and supportive leggings for workouts or casual wear.",
+      "images": [
+        "https://i.ibb.co.com/tMkLxmJB/p9.webp",
+        "https://i.ibb.co.com/HT2Ln3zz/p10.webp"
+      ],
+      "in_stock": true
+    }
+    
+  ]
+  
