@@ -1,0 +1,45 @@
+[
+    {
+      "name": "Emily Carter",
+      "photo": "https://randomuser.me/api/portraits/women/44.jpg",
+      "country": "USA",
+      "rating": 5,
+      "description": "Absolutely love the quality and design. Customer service was amazing!"
+    },
+    {
+      "name": "Arjun Mehta",
+      "photo": "https://randomuser.me/api/portraits/men/32.jpg",
+      "country": "India",
+      "rating": 4,
+      "description": "The fabric is soft and fits perfectly. Delivery took a bit longer though."
+    },
+    {
+      "name": "Sara Müller",
+      "photo": "https://randomuser.me/api/portraits/women/68.jpg",
+      "country": "Germany",
+      "rating": 5,
+      "description": "Great experience! I'll definitely shop here again."
+    },
+    {
+      "name": "Luis Fernandez",
+      "photo": "https://randomuser.me/api/portraits/men/76.jpg",
+      "country": "Spain",
+      "rating": 4,
+      "description": "Stylish and affordable. Wish there were more color options."
+    },
+    {
+      "name": "Aiko Tanaka",
+      "photo": "https://randomuser.me/api/portraits/women/85.jpg",
+      "country": "Japan",
+      "rating": 5,
+      "description": "Loved the packaging and attention to detail. Highly recommended!"
+    },
+    {
+      "name": "Michael Osei",
+      "photo": "https://randomuser.me/api/portraits/men/22.jpg",
+      "country": "Ghana",
+      "rating": 4,
+      "description": "Comfortable and well-priced. Would have liked faster shipping."
+    }
+  ]
+  

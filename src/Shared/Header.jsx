@@ -71,7 +71,7 @@ const Header = () => {
                 <img src="/logo.png" className="w-44" alt="logo" />
             </a>
             <div className="navbar-end gap-6 lg:gap-6">
-                <div className=''>
+                <div className='hidden md:flex'>
                     <Link><span className='flex items-center gap-2'><span className='text-xl'><CiSearch /></span> Search
                     </span></Link>
                 </div>
