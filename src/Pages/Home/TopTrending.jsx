@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-// import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import ProductCard from '../../Components/ProductCard';
 import { Link } from 'react-router-dom';
-// import { FreeMode, Pagination } from 'swiper/modules';
-// import ProductCard from '../../Components/ProductCard';
+import { FaArrowRight } from "react-icons/fa6";
+
+
 
 const TopTrending = () => {
   const [toptrending, setTopTrending] = useState([]);
@@ -33,7 +33,7 @@ const TopTrending = () => {
         </p>
 
         <div className='flex justify-end'>
-        <Link className='text-green-400 font-bold mt-2'>VIEW ALL COLLECTIONS</Link>
+        <Link to={'/collections'} className='text-green-400 flex items-center gap-2 hover:underline  font-bold mt-2'>VIEW ALL COLLECTIONS <FaArrowRight /></Link>
         </div>
         
       </div>

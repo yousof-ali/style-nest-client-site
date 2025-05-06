@@ -3,8 +3,7 @@ import React, { useState } from "react";
 
 // react icons
 import { IoMdHeartEmpty } from "react-icons/io";
-import { HiArrowsUpDown } from "react-icons/hi2";
-import { IoBagHandleOutline, IoEyeOutline } from "react-icons/io5";
+import { IoEyeOutline } from "react-icons/io5";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
 
@@ -27,7 +26,7 @@ const ProductCard = ({ single }) => {
     const productColors = single?.colors || [];
 
     return (
-        <div className="w-full  group">
+        <div  className="w-full  group">
             {/* Product image */}
             <div
                 onMouseOver={() => setProductCardHover(true)}

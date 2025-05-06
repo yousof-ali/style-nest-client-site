@@ -21,7 +21,7 @@ const PageHero = ({ img, title, subtitle }) => {
                             className="mb-3 text-5xl font-bold">{title}</h2>
                         <h2 data-aos="fade-up"
                             data-aos-duration="3000"
-                             className='flex justify-center items-center gap-4 mt-6'>{title} <FaChevronRight /> <span className='text-green-400'>{subtitle}</span></h2>
+                             className='flex justify-center items-center gap-4 mt-6'>{title} <FaChevronRight /> <span className='text-green-400 font-bold'>{subtitle}</span></h2>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import React from 'react';
-import feature1 from '../../assets/images/feature1.jpg'; 
-import feature2 from '../../assets/images/feature2.jpg'; 
-import feature3 from '../../assets/images/feature3.jpg'; 
+import feature1 from '../../assets/images/feature1.jpg';
+import feature2 from '../../assets/images/feature2.jpg';
+import feature3 from '../../assets/images/feature3.jpg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -26,9 +26,10 @@ const FeaturedProduct = () => {
                 {/* Images Section */}
                 <div className="flex-1 w-full h-full gap-2 lg:gap-3 md:gap-8 flex items-center justify-center">
                     {/* Third Image (farthest back) */}
-                    <div> 
+                    <div>
 
-                        <img data-aos="fade-right" 
+                        <img data-aos="fade-up"
+                            data-aos-duration="1000"
                             src={feature3}
                             alt="Standing model"
                             className="w-43  md:w-50 lg:w-54 "
@@ -46,7 +47,8 @@ const FeaturedProduct = () => {
 
                     {/* First Image (front image) */}
                     <div>
-                        <img data-aos="fade-left"
+                        <img data-aos="fade-up"
+                            data-aos-duration="1000"
                             src={feature1}
                             alt="Hanger shirt"
                             className="w-40  md:w-45 lg:w-49 "

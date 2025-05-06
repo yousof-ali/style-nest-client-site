@@ -169,16 +169,16 @@ const Header = () => {
                                 }`}
                         >
                             {/* <h2 className="text-xl font-bold mb-4">Welcome, {user.displayName || 'User'}!</h2> */}
-                            <div className=''>
+                            <div className=' flex items-center gap-2 mb-2'>
                                 {!user.photoURL ? (
                                     <p className='text-2xl w-10 h-10 flex items-center justify-center border rounded-full'><FaRegUser /></p>
                                 ) : (
                                     <img src={user.photoURL} alt="user" className='rounded-full w-10 h-10 object-cover' />
                                 )}
                                  {!user.displayName ? (
-                                <p className=' text-gray-500 pb-4 ml-1 '>User</p>
+                                <p className=' text-gray-500 text-xl font-bold'>User</p>
                             ) : (
-                                <p className='text-gray-500 pb-4 ml-1'>{user.displayName}</p>
+                                <p className='text-gray-500 text-xl font-bold'>{user.displayName}</p>
                             )}
                             </div>
                             <hr />
