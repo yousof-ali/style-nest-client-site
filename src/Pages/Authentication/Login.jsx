@@ -9,7 +9,6 @@ import { useForm } from 'react-hook-form';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import SocialLogin from './SocialLogin';
-
 import { AuthContext } from '../../ContextAPI/AuthProvider';
 import { FiLoader } from 'react-icons/fi';
 import CaptchaModal from './CaptchaModal';
@@ -35,7 +34,6 @@ const Login = () => {
     }
 
     const handleCaptchaVerified = (token) => {
-        setCaptchaVerified(true);
         setShowCaptchaModal(false);
         if (formData) {
             setBtnLoader(true);
