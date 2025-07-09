@@ -12,8 +12,10 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.4",
     "aos": "^3.0.0-beta.6",
+    "axios": "^1.10.0",
     "firebase": "^11.6.1",
     "localforage": "^1.10.0",
+    "lucide-react": "^0.525.0",
     "match-sorter": "^8.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -10,7 +10,7 @@ AOS.init()
 const FeaturedProduct = () => {
     return (
         <div className="bg-base-200 py-8 md:py-32">
-            <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-4 gap-12">
+            <div className="container mx-auto max-w-7xl flex flex-col-reverse lg:flex-row items-center justify-between px-4 gap-12">
 
                 <div className="flex-1">
                     <h3 className="text-sm font-semibold uppercase tracking-widest text-gray-500">FEATURED PRODUCT</h3>

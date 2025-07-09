@@ -4,6 +4,7 @@ import 'react-tabs/style/react-tabs.css';
 import ProductCard from '../../Components/ProductCard';
 import PageHero from '../../Components/PageHero';
 import collectionshero from "../../assets/images/collectionshero.jpg"
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 const Collentions = () => {
     const [collections, setCollections] = useState([]);
@@ -11,25 +12,25 @@ const Collentions = () => {
     const { id } = useParams();
     const [activeTab, setActiveTab] = useState('all');
     const category = ["All","Mens","Womens",'KIds']
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
-        fetch('/Collections.json')
-        .then(res => res.json())
-        .then(data => {
-            setTempcollection(data);
+        axiosPublic.get('/products')
+        .then(res => {
+            setTempcollection(res.data);
             if(activeTab=='all'){
-                setCollections(data);
+                setCollections(res.data);
             }else if(activeTab == 'mens'){
-                  const filter = data.filter(data => data.category === 'men');
+                  const filter = res.data.filter(data => data.category === 'men');
                   setCollections(filter)
             }else if(activeTab == 'womens'){
-                const filter = data.filter(data => data.category === 'women');
+                const filter = res.data.filter(data => data.category === 'women');
                 setCollections(filter)
           }else{
             setCollections([])
           }
         })
-    },[activeTab])
+    },[activeTab,axiosPublic])
 
     return (
         <div>

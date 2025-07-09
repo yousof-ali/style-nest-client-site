@@ -1,206 +1,163 @@
 import React, { useState, useContext, useRef, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { CiSearch } from "react-icons/ci";
-import './Header.css'
-import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { ShoppingCart, AlignJustify } from 'lucide-react';
 import { AuthContext } from '../ContextAPI/AuthProvider';
 import { FaRegUser } from "react-icons/fa";
 import Swal from 'sweetalert2';
-
+import './Header.css';
 
 const Header = () => {
     const { user, logOutUser } = useContext(AuthContext);
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const sidebarRef = useRef();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const menuRef = useRef();
 
-    const handleClickOutside = (event) => {
-        if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-            setIsSidebarOpen(false);
-        }
-    };
+    // Detect scroll
     useEffect(() => {
-        if (isSidebarOpen) {
-            document.addEventListener("mousedown", handleClickOutside);
-        } else {
-            document.removeEventListener("mousedown", handleClickOutside);
-        }
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 10);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
+    // Close mobile menu on outside click
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsMobileMenuOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [isSidebarOpen]);
+    }, []);
 
     const handleLogOut = () => {
         Swal.fire({
-            title: "Log out Accout?",
+            title: "Log out Account?",
             text: "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, Log Out!"
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-                logOutUser()
-                .then(res =>  {
-                    console.log(res)
-                    Swal.fire({
-                        title: "Log Out!",
-                        text: "Your Account log out Successfull.",
-                        icon: "success"
-                      });
-                      setIsSidebarOpen(false);
-                })
-              
+                logOutUser().then(() => {
+                    Swal.fire("Logged Out!", "You have been logged out successfully.", "success");
+                    setIsMobileMenuOpen(false);
+                });
             }
-          });
-    }
+        });
+    };
+
     const links = (
         <>
-            <li>
-                <NavLink
-                    to="/"
-                    className="relative  before:absolute before:bottom-[-2px] before:left-0 before:h-[2px] before:w-0 before:bg-[#a6e3b4] before:transition-all before:duration-300 hover:before:w-full capitalize"
-                >
-                    Home
-                </NavLink>
-            </li>
-            <li>
-                <NavLink
-                    to="/collections"
-                    className="relative before:absolute before:bottom-[-2px] before:left-0 before:h-[2px] before:w-0 before:bg-[#a6e3b4] before:transition-all before:duration-300 hover:before:w-full capitalize"
-                >
-                    Collections
-                </NavLink>
-            </li>
-            {user ? <li>
-                <NavLink
-                    to="/dashboard"
-                    className="relative before:absolute before:bottom-[-2px] before:left-0 before:h-[2px] before:w-0 before:bg-[#a6e3b4] before:transition-all before:duration-300 hover:before:w-full capitalize"
-                >
-                    Dashboard
-                </NavLink>
-            </li> : <li>
-                <NavLink
-                    to="/login"
-                    className="relative before:absolute before:bottom-[-2px] before:left-0 before:h-[2px] before:w-0 before:bg-[#a6e3b4] before:transition-all before:duration-300 hover:before:w-full capitalize"
-                >
-                    Log In
-                </NavLink>
-            </li>}
+            <li><NavLink to="/" className="nav-link">Home</NavLink></li>
+            <li><NavLink to="/collections" className="nav-link">Collections</NavLink></li>
+            {user && <li><NavLink to="/dashboard" className="nav-link">Dashboard</NavLink></li>}
+            {!user && <li><NavLink to="/login" className="nav-link">Log In</NavLink></li>}
         </>
     );
 
     return (
-        <div className="navbar lg:p-4 lg:px-12 shadow bg-base-100">
-            <div className="navbar-start">
-                <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
-                        </svg>
-                    </div>
-                    <ul tabIndex={0} className="menu menu-sm  font-bold dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        {links}
-                        <Link >
-                            <div className=" flex items-center gap-1">
-                                <span className='text-xl'><HiOutlineShoppingBag /></span>
-                                <p>My Cart</p>
-                                <p className='bg-pink-400 text-white rounded-full p-1'>+0</p>
-
-                            </div>
-
-                        </Link>
-                    </ul>
-                </div>
-                <div className="navbar-start hidden lg:flex">
-                    <ul className=" flex gap-6 font-semibold  px-1">
-                        {links}
-
-                    </ul>
-                </div>
-                <a className="cursor-pointer normal-case text-xl md:hidden">
-                    <img src="/logo.png" className="w-44" alt="logo" />
-                </a>
-            </div>
-            <a className="hidden cursor-pointer md:flex  normal-case text-xl">
-                <img src="/logo.png" className="w-44" alt="logo" />
-            </a>
-            <div className="navbar-end gap-6 lg:gap-6 ">
-                <div className='hidden md:flex'>
-                    <Link><span className='flex items-center gap-2'><span className='text-xl'><CiSearch /></span> Search
-                    </span></Link>
-                </div>
-                <div className='hidden  lg:flex'>
-                    <Link >
-                        <div className=" flex items-center gap-1">
-                            <span className='text-xl'><HiOutlineShoppingBag /></span>
-                            <p>My Cart</p>
-                            <p className='bg-pink-400 text-white rounded-full p-1'>+0</p>
-
-                        </div>
-
+        <div className="w-full fixed top-0 z-50 bg-base-100">
+            <div className="navbar max-w-7xl mx-auto lg:p-4 flex items-center justify-between">
+                {/* Mobile Menu Button + Logo */}
+                <div className="flex items-center gap-4 lg:hidden">
+                    <button onClick={() => setIsMobileMenuOpen(true)} className="text-2xl">
+                        <AlignJustify />
+                    </button>
+                    <Link to="/" className="normal-case text-xl">
+                        <img src="/logo.png" className="w-36" alt="logo" />
                     </Link>
                 </div>
-                {user ? (
-                    <>
-                        {/* User Avatar */}
-                        <div
-                            title={user.displayName || 'user'}
-                            className='bg-white border p-1 rounded-full border-green-500 cursor-pointer z-50'
-                            onClick={() => setIsSidebarOpen(true)}
-                        >
-                            {!user.photoURL ? (
-                                <span className='text-2xl'><FaRegUser /></span>
-                            ) : (
-                                <img src={user.photoURL} alt="user" className='w-8 h-8 rounded-full object-cover' />
-                            )}
-                        </div>
 
-                        {/* Sidebar Overlay */}
-                        {isSidebarOpen && (
-                            <div className="fixed inset-0 bg-black/40 z-40"></div>
-                        )}
+                {/* Desktop Nav */}
+                <div className="navbar-start hidden lg:flex">
+                    <ul className="flex gap-6 font-semibold px-1 text-sm text-gray-600">
+                        {links}
+                    </ul>
+                </div>
 
-                        {/* Sidebar Content (Right Side) */}
-                        <div
-                            ref={sidebarRef}
-                            className={`fixed top-0 right-0 h-screen w-64  bg-white shadow-lg z-50 p-6 transition-transform duration-300 ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
-                                }`}
-                        >
-                            {/* <h2 className="text-xl font-bold mb-4">Welcome, {user.displayName || 'User'}!</h2> */}
-                            <div className=' flex items-center gap-2 mb-2'>
-                                {!user.photoURL ? (
-                                    <p className='text-2xl w-10 h-10 flex items-center justify-center border rounded-full'><FaRegUser /></p>
-                                ) : (
-                                    <img src={user.photoURL} alt="user" className='rounded-full w-10 h-10 object-cover' />
-                                )}
-                                 {!user.displayName ? (
-                                <p className=' text-gray-500 text-xl font-bold'>User</p>
-                            ) : (
-                                <p className='text-gray-500 text-xl font-bold'>{user.displayName}</p>
-                            )}
-                            </div>
-                            <hr />
-                            <ul className="space-y-4 mt-4 text-gray-500">
-                                <li><Link  onClick={() => setIsSidebarOpen(false)}>My Account</Link></li>
-                                <li><Link  onClick={() => setIsSidebarOpen(false)}></Link>Check Out</li>
-                                <li><Link  onClick={() => setIsSidebarOpen(false)}>My Wishlist</Link></li>
-                                <button onClick={handleLogOut} className="btn btn-outline btn-success w-full hover:text-white">Log Out</button>
-                            </ul>
-                        </div>
+                {/* Desktop Logo */}
+                <Link to="/" className="hidden md:flex normal-case text-xl">
+                    <img src="/logo.png" className="w-44" alt="logo" />
+                </Link>
 
-                    </>
-                ) : (
-                    <div>
-                        <Link to={'/sign-up'}>
-                            <button className="btn btn-outline hover:text-white btn-success rounded-full">Sign Up</button>
+                {/* Right Side */}
+                <div className="navbar-end gap-4 lg:gap-6">
+                    <div className="hidden md:flex">
+                        <Link to="#">
+                            <span className="flex items-center gap-2">
+                                <span className="text-xl"><CiSearch /></span> Search
+                            </span>
                         </Link>
                     </div>
-                )}
-
-
+                    {user ? (
+                        <>
+                            <Link>
+                                <span className="text-xl text-gray-600"><ShoppingCart /></span>
+                            </Link>
+                            <div title={user.displayName || 'User'}>
+                                {user.photoURL ? (
+                                    <img src={user.photoURL} alt="user" className="w-8 h-8 rounded-full object-cover p-0.5 border border-green-500" />
+                                ) : (
+                                    <span className="text-2xl"><FaRegUser /></span>
+                                )}
+                            </div>
+                        </>
+                    ) : (
+                        <Link to="/sign-up">
+                            <button className="btn btn-outline btn-success rounded-full">Sign Up</button>
+                        </Link>
+                    )}
+                </div>
             </div>
+
+            {/* Sidebar (Mobile Menu) */}
+            {isMobileMenuOpen && (
+                <>
+                    <div className="fixed inset-0 bg-black/40 z-40" onClick={() => setIsMobileMenuOpen(false)}></div>
+                    <div
+                        ref={menuRef}
+                        className="fixed top-0 left-0 h-screen w-72 bg-white z-50 p-6 transition-transform duration-300"
+                    >
+                        <div className="mb-6">
+                            <img src="/logo.png" className="w-36" alt="logo" />
+                            <hr />
+                        </div>
+
+                        <ul className="space-y-4 text-gray-700 font-medium text-sm">
+                            {links}
+                            {user && (
+                                <>
+                                    <li><Link onClick={() => setIsMobileMenuOpen(false)}>My Account</Link></li>
+                                    <li><Link onClick={() => setIsMobileMenuOpen(false)}>Check Out</Link></li>
+                                    <li><Link onClick={() => setIsMobileMenuOpen(false)}>My Wishlist</Link></li>
+                                    <li>
+                                        <button onClick={handleLogOut} className="btn btn-outline btn-success w-full hover:text-white">
+                                            Log Out
+                                        </button>
+                                    </li>
+                                </>
+                            )}
+                            {!user && (
+                                <li>
+                                    <Link to="/sign-up">
+                                        <button className="btn btn-outline btn-success w-full hover:text-white">
+                                            Sign Up
+                                        </button>
+                                    </Link>
+                                </li>
+                            )}
+                        </ul>
+                    </div>
+                </>
+            )}
         </div>
     );
 };
