@@ -1,0 +1,13 @@
+.slide-bg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1);
+  opacity: 0;
+  transition: transform 1.2s ease, opacity 1.2s ease;
+}
+
+.swiper-slide-active .slide-bg {
+  transform: scale(1.1);
+  opacity: 1;
+}

@@ -1,34 +1,11 @@
 [
-  {
-    "id": 1,
-    "leftImage": "https://i.ibb.co.com/pvHpHWk3/sb1.png",
-    "rightImage": "https://i.ibb.co.com/0j35Gxt8/sb2.png",
-    "altLeft": "Left Image 1",
-    "bgColour":["#e6e6eb","#f0f0ed"],
-    "altRight": "Right Image 1",
-    "heading":"Oversized Denim Jacket",
-    "des": "Oversized jacket in washed denim with distressed details. Collar, buttons at front, and dropped shoulders. Chest pockets with flap."
-  },
-  {
-    "id": 2,
-    "leftImage": "https://i.ibb.co.com/mCZqMvhM/s3.png",
-    "rightImage": "https://i.ibb.co.com/kshB79TR/s4.png",
-    "altLeft": "Left Image 1",
-    "bgColour":["#ebebeb","#f7f7f7"],
-    "altRight": "Right Image 1",
-    "heading":"Cute Kids Cotton T-Shirt",
-    "des": "Soft and breathable kids' t-shirt made from 100% organic cotton. Fun prints, vibrant colors, and a comfy fit — perfect for everyday adventures!"
-  },
-  {
-    "id":3 ,
-    "leftImage": "https://i.ibb.co.com/20CSZ8Qj/s5.png",
-    "rightImage": "https://i.ibb.co.com/G499CmxX/s6.png",
-    "altLeft": "Left Image 1",
-    "bgColour":["#dedee3","#f0f0ed"],
-    "altRight": "Right Image 1",
-    "heading":"Black Adventure Hoodie",
-    "des": "Bright, bold, and built for fun! Our kids' hoodie features playful rainbow prints, a cozy hood, and extra-soft fabric — perfect for every little explorer!."
-  }
-  
-  
+  [
+    { "image": "/banner1.jpg", "text": "text2" },
+    {
+      "image": "/banner1.jpg",
+
+      "text": "text1"
+    },
+    { "image": "/banner1.jpg", "text": "text2" }
+  ]
 ]

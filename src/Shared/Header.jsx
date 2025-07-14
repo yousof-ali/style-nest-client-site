@@ -64,8 +64,8 @@ const Header = () => {
     );
 
     return (
-        <div className="w-full fixed top-0 z-50 bg-base-100">
-            <div className="navbar max-w-7xl mx-auto lg:p-4 flex items-center justify-between">
+        <div className="w-full fixed  top-0 z-50 bg-base-100">
+            <div className="navbar max-w-7xl mx-auto lg:py-4 flex items-center justify-between">
                 {/* Mobile Menu Button + Logo */}
                 <div className="flex items-center gap-4 lg:hidden">
                     <button onClick={() => setIsMobileMenuOpen(true)} className="text-2xl">
@@ -85,7 +85,7 @@ const Header = () => {
 
                 {/* Desktop Logo */}
                 <Link to="/" className="hidden md:flex normal-case text-xl">
-                    <img src="/logo.png" className="w-44" alt="logo" />
+                    <img src="/logo.png" className="w-48" alt="logo" />
                 </Link>
 
                 {/* Right Side */}
@@ -112,7 +112,8 @@ const Header = () => {
                         </>
                     ) : (
                         <Link to="/sign-up">
-                            <button className="btn btn-outline btn-success rounded-full">Sign Up</button>
+                            <button className="btn btn-neutral
+                            btn-outline ">Sign Up</button>
                         </Link>
                     )}
                 </div>
@@ -126,9 +127,9 @@ const Header = () => {
                         ref={menuRef}
                         className="fixed top-0 left-0 h-screen w-72 bg-white z-50 p-6 transition-transform duration-300"
                     >
-                        <div className="mb-6">
+                        <div className="mb-6 border-b border-b-[#5da82b]">
                             <img src="/logo.png" className="w-36" alt="logo" />
-                            <hr />
+                            
                         </div>
 
                         <ul className="space-y-4 text-gray-700 font-medium text-sm">
@@ -139,21 +140,13 @@ const Header = () => {
                                     <li><Link onClick={() => setIsMobileMenuOpen(false)}>Check Out</Link></li>
                                     <li><Link onClick={() => setIsMobileMenuOpen(false)}>My Wishlist</Link></li>
                                     <li>
-                                        <button onClick={handleLogOut} className="btn btn-outline btn-success w-full hover:text-white">
+                                        <button onClick={handleLogOut} className="btn btn-outline btn-neutral">
                                             Log Out
                                         </button>
                                     </li>
                                 </>
                             )}
-                            {!user && (
-                                <li>
-                                    <Link to="/sign-up">
-                                        <button className="btn btn-outline btn-success w-full hover:text-white">
-                                            Sign Up
-                                        </button>
-                                    </Link>
-                                </li>
-                            )}
+                            
                         </ul>
                     </div>
                 </>

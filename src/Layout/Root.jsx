@@ -6,9 +6,9 @@ import Footer from '../Shared/Footer';
 const Root = () => {
     const location = useLocation()
     const signup_login = location.pathname === '/sign-up' || location.pathname === '/login'
-    console.log(signup_login)
+
     return (
-        <div>
+        <div className={`${!signup_login&&"mt-16 lg:mt-19"}`}>
             {
                 !signup_login && <Header></Header>
             }

@@ -1,102 +1,86 @@
-import React, { useEffect, useState } from 'react';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "./SliderStyles.css"; // custom zoom/fade animation
 
 const Sliders = () => {
-    const [data, setData] = useState([]);
-    const [currentSlide, setCurrentSlide] = useState(0);
-
-    const settings = {
-        dots: true,
-        infinite: true,
-        vertical: true,
-        verticalSwiping: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        speed: 1000,
-        autoplaySpeed: 3000,
-        cssEase: "linear",
-        afterChange: (index) => {
-            setCurrentSlide(index);
-        },
-    };
-
-    useEffect(() => {
-        fetch('/sliders.json')
-            .then(res => res.json())
-            .then(result => {
-                setData(result);
-            });
-    }, []);
-
-
     return (
-        <div className="w-full mx-auto overflow-hidden">
-            <Slider {...settings}>
-                {data?.map((slide, index) => {
-                    const isActive = currentSlide === index;
+        <div className="max-w-7xl mx-auto">
+            <Swiper
+                modules={[Autoplay, EffectFade]}
+                effect="fade"
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                loop
+                className="max-w-full"
+            >
+                {/* Slide 1 */}
+                <SwiperSlide>
+                    <div className="h-[90vh] w-full relative overflow-hidden">
+                        {/* Background zoom image only */}
+                        <div
+                            className="absolute inset-0 slide-bg z-0"
+                            style={{ backgroundImage: `url('/banner1.jpg')` }}
+                        />
 
-                    return (
-                        <div key={slide.id} className="relative h-[30vh]  w-full md:h-[50vh] lg:h-[90vh]">
-                            <div className="flex w-full h-full  justify-between ">
-                                {/* Left Image */}
-                                <div className="flex  items-center justify-center flex-1 overflow-hidden"
-                                    style={{ backgroundColor: slide.bgColour[0] }}>
-                                    <img
-                                        src={slide.leftImage}
-                                        alt={slide.altLeft}
-                                        className={`w-full h-full object-contain transition-all duration-1000 ease-in-out ${isActive ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
-                                            }`}
-                                    />
-                                </div>
+                        {/* Text stays stable, not scaled */}
+                        <div className="relative z-10 max-w-xl pl-4 md:pl-16 text-white space-y-4 h-full flex items-center">
+                            <div>
+                                <p className="font-bold tracking-wider text-sm md:text-base">NEW COLLECTION</p>
 
-                                {/* Right Image */}
-                                <div className="flex items-center justify-center flex-1 overflow-hidden"
-                                    style={{ backgroundColor: slide.bgColour[1] }}>
-                                    <img
-                                        src={slide.rightImage}
-                                        alt={slide.altRight}
-                                        className={`w-full h-full object-contain transition-all duration-1000 ease-in-out ${isActive ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
-                                            }`}
-                                    />
-                                </div>
-                            </div>
+                                <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+                                    FIND YOUR <br />
+                                    <span className="block">PERFECT</span>
+                                </h1>
 
-                            {/* Overlay Text */}
-                            <div className='absolute hidden md:flex justify-center flex-col items-center top-0 left-0 w-full h-full px-4'>
-                                <h2
-                                    className={`lg:text-5xl text-3xl font-bold text-center transform transition-all duration-1000 ease-in-out
-      ${isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
-    `}
-                                >
-                                    {slide.heading}
-                                </h2>
-
-                                <p
-                                    className={`text-gray-500 hidden md:flex text-center lg:w-2/6 md:w-1/2 my-6 transform transition-all duration-1000 ease-in-out
-      ${isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
-    `}
-                                >
-                                    {slide.des}
+                                <p className="text-lg md:text-xl">
+                                    Uncompromising in style, quality and performance
                                 </p>
 
-                                <button
-                                    className={`btn mt-2 px-7 py-6 md:text-2xl bg-green-300 text-white font-bold transform transition-all duration-1000 ease-in-out
-      ${isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
-    `}
-                                >
-                                    Shop Now
+                                <button className="bg-white text-black font-bold px-8 py-4 mt-4 shadow hover:opacity-90 transition">
+                                    SHOP THE COLLECTION
                                 </button>
                             </div>
                         </div>
-                    );
-                })}
-            </Slider>
+                    </div>
+                </SwiperSlide>
+
+
+                {/* Slide 2 */}
+                <SwiperSlide>
+                    <div className="h-[90vh] w-full relative overflow-hidden">
+                        {/* Background zoom image only */}
+                        <div
+                            className="absolute inset-0 slide-bg z-0"
+                            style={{ backgroundImage: `url('/banner2.jpg')` }}
+                        />
+
+                        {/* Text stays stable, not scaled */}
+                        <div className="relative z-10 max-w-xl pl-4 md:pl-16 text-cyan-400 space-y-4 h-full flex items-center">
+                            <div>
+                                <p className="font-bold tracking-wider text-sm md:text-base">NEW COLLECTION</p>
+
+                                <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+                                    FIND YOUR <br />
+                                    <span className="block">PERFECT</span>
+                                </h1>
+
+                                <p className="text-lg md:text-xl">
+                                    Uncompromising in style, quality and performance
+                                </p>
+
+                                <button className="bg-white text-black font-bold px-8 py-4 mt-4 shadow hover:opacity-90 transition">
+                                    SHOP THE COLLECTION
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </SwiperSlide>
+
+            </Swiper>
         </div>
     );
-}
+};
 
 export default Sliders;
