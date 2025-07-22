@@ -8,13 +8,13 @@ import Review from './Review';
 
 const Home = () => {
     return (
-        <div>
+        <div className='font-display'>
             <Sliders></Sliders>
             {/* <Category></Category> */}
-            <TopTrending></TopTrending>
+            {/* <TopTrending></TopTrending>
             <FeaturedProduct></FeaturedProduct>
             <FromOurBlog></FromOurBlog>
-            <Review></Review>
+            <Review></Review> */}
         </div>
     );
 };

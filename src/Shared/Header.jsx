@@ -122,7 +122,7 @@ const Header = () => {
             {/* Sidebar (Mobile Menu) */}
             {isMobileMenuOpen && (
                 <>
-                    <div className="fixed inset-0 bg-black/40 z-40" onClick={() => setIsMobileMenuOpen(false)}></div>
+                    <div className="fixed backdrop-blur-xs inset-0 bg-black/40 z-40" onClick={() => setIsMobileMenuOpen(false)}></div>
                     <div
                         ref={menuRef}
                         className="fixed top-0 left-0 h-screen w-72 bg-white z-50 p-6 transition-transform duration-300"

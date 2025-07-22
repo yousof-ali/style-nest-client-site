@@ -1,11 +1,38 @@
 [
-  [
-    { "image": "/banner1.jpg", "text": "text2" },
-    {
-      "image": "/banner1.jpg",
-
-      "text": "text1"
-    },
-    { "image": "/banner1.jpg", "text": "text2" }
-  ]
+  {
+    "image": "https://i.ibb.co/r2z7c0CR/slider3.jpg",
+    "textColor": "text-white",
+    "tag": "NEW COLLECTION",
+    "title": "FIND YOUR",
+    "subtitle": "PERFECT",
+    "description": "Uncompromising in style, quality and performance",
+    "buttonText": "SHOP THE COLLECTION"
+  },
+  {
+    "image": "https://i.ibb.co/B5SG7Ywb/slider2.jpg",
+    "textColor": "text-black",
+    "tag": "LIMITED EDITION",
+    "title": "STYLE THAT",
+    "subtitle": "INSPIRES",
+    "description": "Elegance meets comfort in our latest drop",
+    "buttonText": "EXPLORE NOW"
+  },
+  {
+    "image": "https://i.ibb.co/mYCYLmN/banner2.jpg",
+    "textColor": "text-yellow-500",
+    "tag": "SUMMER SALE",
+    "title": "COOL LOOKS",
+    "subtitle": "HOT DEALS",
+    "description": "Enjoy up to 50% off selected styles",
+    "buttonText": "SHOP NOW"
+  },
+  {
+    "image": "https://i.ibb.co/W49Rhn8Y/banner1.jpg",
+    "textColor": "text-white",
+    "tag": "SUSTAINABLE FASHION",
+    "title": "WEAR THE",
+    "subtitle": "FUTURE",
+    "description": "Eco-friendly materials, timeless designs",
+    "buttonText": "DISCOVER MORE"
+  }
 ]
