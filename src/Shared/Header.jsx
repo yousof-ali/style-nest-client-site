@@ -84,7 +84,7 @@ const Header = () => {
                 </div>
 
                 {/* Desktop Logo */}
-                <Link to="/" className="hidden md:flex normal-case text-xl">
+                <Link to="/" className="hidden lg:flex normal-case text-xl">
                     <img src="/logo.png" className="w-48" alt="logo" />
                 </Link>
 
@@ -136,11 +136,11 @@ const Header = () => {
                             {links}
                             {user && (
                                 <>
-                                    <li><Link onClick={() => setIsMobileMenuOpen(false)}>My Account</Link></li>
+                                    <li ><Link onClick={() => setIsMobileMenuOpen(false)}>My Account</Link></li>
                                     <li><Link onClick={() => setIsMobileMenuOpen(false)}>Check Out</Link></li>
                                     <li><Link onClick={() => setIsMobileMenuOpen(false)}>My Wishlist</Link></li>
                                     <li>
-                                        <button onClick={handleLogOut} className="btn btn-outline btn-neutral">
+                                        <button onClick={handleLogOut} className="btn mt-4 w-full btn-outline btn-neutral">
                                             Log Out
                                         </button>
                                     </li>

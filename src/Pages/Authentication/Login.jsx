@@ -4,7 +4,7 @@ import { MdOutlineMail } from "react-icons/md";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import login from "../../assets/images/login.jpg";
 import loginBg from "../../assets/images/loginBg.jpg";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -22,6 +22,7 @@ const Login = () => {
     const [err, setError] = useState('')
     const [showCaptchaModal, setShowCaptchaModal] = useState(false);
     const [formData, setFormData] = useState(null);
+    const navigate = useNavigate();
 
     const handleShowPass = () => setShowPass(!showPass);
 
@@ -41,6 +42,8 @@ const Login = () => {
             .then(res => {
                 console.log(res.user)
                 setBtnLoader(false);
+                navigate("/")
+                
             })
             .catch((err) => {
                 setError('Invalid Email or Password!');
@@ -51,11 +54,11 @@ const Login = () => {
 
     }
 
-    const handleForgatePass = () => { }
+    const handleForgatePass = () => { 
+        console.log("forgate click")
+    }
 
     AOS.init();
-
-    console.log(errors);
 
 
     return (
@@ -71,46 +74,46 @@ const Login = () => {
                 <div className="w-full max-w-md bg-white rounded-lg shadow-lg overflow-hidden">
                     {/* Top Banner */}
                     <div className="relative">
-                        <img src={login} alt="Sign Up" className="w-full h-48 object-cover" />
+                        <img src={login} alt="Sign Up" className="w-full sm:h-48 h-34 object-cover" />
                         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                            <h2 data-aos='fade-up' data-aos-duration="2000" className="text-2xl md:text-2xl font-bold text-white">LOGIN AN ACCOUNT</h2>
+                            <h2 data-aos='fade-up' data-aos-duration="2000" className="text-sm sm:text-2xl md:text-2xl font-bold text-white">LOGIN AN ACCOUNT</h2>
                         </div>
                     </div>
                     <SocialLogin></SocialLogin>
 
                     {/* Form Section */}
-                    <form onSubmit={handleSubmit(onSubmit)} className="px-8 pb-6 space-y-6">
+                    <form onSubmit={handleSubmit(onSubmit)} className="sm:px-8 px-4 pb-6 space-y-6">
 
 
                         {/* Email */}
-                        <div className="relative">
-                            <MdOutlineMail className="absolute top-4 left-3 text-2xl text-gray-400" />
+                        <div className="relative ">
+                            <MdOutlineMail className="absolute top-3 left-3 text-2xl text-gray-400" />
                             <input
                                 type="email"
                                 name="email"
                                 {...register('email', { required: true })}
                                 id="email"
                                 placeholder="Email Address"
-                                className="w-full border border-gray-300 rounded-md py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+                                className="w-full border border-gray-300 rounded-md py-3 pl-12 pr-4 sm:text-base text-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                             />
                             {errors.email?.type === 'required' && <p className='text-sm font-light text-red-400 pt-1'>Email is required !</p>}
                         </div>
 
                         {/* Password */}
                         <div className="relative">
-                            <RiLockPasswordLine className="absolute top-4 left-3 text-2xl text-gray-400" />
+                            <RiLockPasswordLine className="absolute top-3 left-3 text-2xl text-gray-400" />
                             <input
                                 type={showPass ? 'text' : 'password'}
                                 name="password"
                                 {...register('password', { required: true })}
                                 id="password"
                                 placeholder="Password"
-                                className="w-full border border-gray-300 rounded-md py-3 pl-12 pr-12 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+                                className="w-full border border-gray-300 rounded-md py-3 pl-12 sm:text-base text-sm pr-12 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                             />
                             {errors.password?.type === 'required' && <p className='text-sm font-light text-red-400 pt-1'>Password is required !</p>}
                             <div
                                 onClick={handleShowPass}
-                                className="absolute top-4 right-3 text-2xl text-gray-400 cursor-pointer"
+                                className="absolute top-4 text-base right-3 lg:text-2xl text-gray-400 cursor-pointer"
                             >
                                 {showPass ? <FaRegEyeSlash /> : <FaRegEye />}
                             </div>
@@ -129,8 +132,8 @@ const Login = () => {
                             {btnLoader && <FiLoader className="text-2xl animate-spin  text-white" />}Log In
                         </button>
                     </form>
-                    <div className='px-8 mb-8'>
-                        <p className='text-gray-400 text-sm'>If you have no account, please <Link to={'/sign-up'} className='text-green-400 font-semibold underline ml-2'>Create Account</Link></p>
+                    <div className='sm:px-8 px-4 mb-8'>
+                        <p className='text-gray-400 sm:text-base text-xs'>If you have no account, please <Link to={'/sign-up'} className='text-green-400 font-semibold underline ml-2'>Create Account</Link></p>
 
                     </div>
                 </div>

@@ -8,15 +8,15 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <div className='bg-[#f5f3ed] py-6 md:pt-20 px-2 md:px-0'>
-            <div className='container mx-auto'>
-              <div className='flex  flex-col md:flex-row gap-6 md:gap-0 md:justify-between md:items-center'>
+            <div className='max-w-7xl px-4 mx-auto'>
+              <div className='flex  flex-col md:flex-row gap-3 sm:gap-6 md:gap-0 md:justify-between md:items-center'>
                 <div>
-                   <img className='w-48' src="/logo.png" alt="" />
-                   <p>stylenest@gamail.com</p>
+                   <img className='md:w-48 w-36' src="/logo.png" alt="logo" />
+                   <p className='text-gray-500'>stylenest@gamail.com</p>
                    <p className='font-semibold mt-2'>Monday till Friday 10 to 6 EST</p>
                 </div>
                 <div>
-                    <h2 className='font-bold mb-2'>GET MORE RESERVED ON:</h2>
+                    <h2 className='font-semibold mb-2'>GET MORE RESERVED ON:</h2>
                     <div className='text-2xl flex gap-2'>
                     <FaInstagram />
                     <FaFacebook />
@@ -35,7 +35,7 @@ const Footer = () => {
                     
                     </div>
                 </div>
-                <div className='md:text-right lg:text-left '>
+                <div className=''>
                     <h2 className='text-xl font-semibold mb-3'>MY ACCOUNT</h2>
                     <div className='flex flex-col space-y-1 text-gray-500'>
                     <span ><Link>My Account</Link></span>
@@ -69,7 +69,7 @@ const Footer = () => {
               </div>
             </div>
             <div className='divider  py-4'></div>
-            <p className='text-center text-sm text-gray-500'>Copyright © 2021 StyleNest.</p>
+            <p className='text-center text-sm text-gray-500'>Copyright © 2025 StyleNest.</p>
         </div>
     );
 };

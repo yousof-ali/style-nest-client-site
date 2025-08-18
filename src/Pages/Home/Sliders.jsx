@@ -31,7 +31,7 @@ const Sliders = () => {
             >
                 {sliderData.map((slide, index) => (
                     <SwiperSlide key={index}>
-                        <div className="lg:h-[90vh] h-[50vh] w-full relative overflow-hidden">
+                        <div className="lg:h-[90vh] xl:h-[70vh] h-[50vh] w-full relative overflow-hidden">
                             <div
                                 className="absolute inset-0 slide-bg z-0"
                                 style={{ backgroundImage: `url('${slide.image}')` }}
