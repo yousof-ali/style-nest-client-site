@@ -31,13 +31,13 @@ const categories = [
 
 const Category = () => {
   return (
-    <div className="max-w-7xl lg:py-16 py-8 px-4 mx-auto">
+    <div className="max-w-5xl lg:py-16 py-8 px-4 mx-auto">
       {/* Section Heading */}
       <div className="text-center">
-        <h2 className="text-xl font-semibold sm:text-2xl lg:text-4xl">
+        <h2 className="section-heading">
           Top Categories
         </h2>
-        <p className="text-gray-500 max-w-[800px] mx-auto mt-2 sm:text-sm text-xs">
+        <p className="mx-auto section-desc">
           Explore the top categories at StyleNest! Clothes, shoes and cool
           accessories for the new season are available now at StyleNest online.
         </p>
@@ -48,7 +48,7 @@ const Category = () => {
         {categories.map((cate, indx) => (
           <div
             key={cate.id}
-            className={`relative group overflow-hidden rounded-2xl cursor-pointer ${
+            className={`relative group overflow-hidden  rounded-2xl cursor-pointer ${
               indx === 0 ? "md:col-span-2 md:row-span-2" : ""
             }`}
             data-aos="fade-up"

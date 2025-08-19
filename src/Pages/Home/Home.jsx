@@ -9,9 +9,10 @@ import Review from './Review';
 const Home = () => {
     return (
         <div className='font-display'>
-            <Sliders></Sliders>
-            <Category></Category>
-            {/* <TopTrending></TopTrending>
+            <Sliders/>
+            <Category/>
+            <TopTrending/>
+            {/* 
             <FeaturedProduct></FeaturedProduct>
             <FromOurBlog></FromOurBlog>
             <Review></Review> */}

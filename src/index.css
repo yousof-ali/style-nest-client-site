@@ -5,3 +5,15 @@
 @theme {
     --font-display: "Poppins", sans-serif;
 }
+
+@layer components {
+  /* Section heading style */
+  .section-heading {
+    @apply text-xl font-semibold sm:text-2xl lg:text-4xl;
+  }
+
+  /* Section description style */
+  .section-desc {
+    @apply text-gray-500 max-w-[800px]  mt-2 sm:text-sm text-[10px];
+  }
+}

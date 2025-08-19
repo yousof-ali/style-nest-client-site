@@ -26,7 +26,7 @@ const ProductCard = ({ single }) => {
     const productColors = single?.colors || [];
 
     return (
-        <div  className="w-full  group">
+        <div  className="w-full   group">
             {/* Product image */}
             <div
                 onMouseOver={() => setProductCardHover(true)}
@@ -40,7 +40,7 @@ const ProductCard = ({ single }) => {
                             ? productImages[1]
                             : productImages[0] || "https://via.placeholder.com/300"
                     }
-                    className="w-full object-cover"
+                    className="w-full  object-cover"
                 />
 
                 {/* Action buttons */}
@@ -52,7 +52,7 @@ const ProductCard = ({ single }) => {
                             onMouseOut={() => setWishlistVisible(false)}
                             className="relative group-hover:translate-y-0 translate-y-[50px] transition-all opacity-0 group-hover:opacity-100 duration-300"
                         >
-                            <p title="Wishlist" className="rounded-full bg-white p-2 hover:bg-[#0FABCA] hover:text-white transition-all duration-200 cursor-pointer">
+                            <p title="Wishlist" className="rounded-full bg-white p-2 hover:bg-green-500 hover:text-white transition-all duration-200 cursor-pointer">
                                 <IoMdHeartEmpty size={20} />
                             </p>
                             
@@ -64,7 +64,7 @@ const ProductCard = ({ single }) => {
                             onMouseOut={() => setQuickViewVisible(false)}
                             className="relative group-hover:translate-y-0 transition-all duration-700 opacity-0 group-hover:opacity-100 translate-y-[110px]"
                         >
-                            <p title="Details" className="rounded-full  bg-white p-2 hover:bg-[#0FABCA] hover:text-white transition-all duration-200 cursor-pointer">
+                            <p title="Details" className="rounded-full  bg-white p-2 hover:bg-green-500 hover:text-white transition-all duration-300 cursor-pointer">
                                 <IoEyeOutline size={20} />
                             </p>
                             
@@ -73,17 +73,8 @@ const ProductCard = ({ single }) => {
 
                     {/* Quantity & Add to cart */}
                     <div className="w-full flex mt-6 items-center opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 translate-y-[60px] bg-[rgba(0,0,0,0.5)]">
-                        <div className="flex w-[50%] justify-center px-2 py-0.5 items-center border-r border-gray-400 text-white">
-                            <button onClick={handleDecrement}><FiMinus /></button>
-                            <input
-                                type="number"
-                                value={count}
-                                onChange={handleInputValueChange}
-                                className="w-[40px] bg-transparent text-center text-white"
-                            />
-                            <button onClick={handleIncrement}><FiPlus /></button>
-                        </div>
-                        <button className="py-[13px] relative flex items-center justify-center grow text-white hover:bg-green-400">
+                        
+                        <button className="py-[13px] relative flex items-center justify-center grow text-white duration-300 hover:bg-green-500">
                             ADD CART
                         </button>
                     </div>
@@ -104,8 +95,8 @@ const ProductCard = ({ single }) => {
                     <span className="text-sm text-gray-500">({single?.reviews || 43})</span>
                 </div>
 
-                <h3 className="text-md font-medium text-gray-900 mt-1">{productName}</h3>
-                <p className="text-gray-700">Tk {productPrice.toLocaleString()}</p>
+                <h3 className="text-md text-sm md:text-base my-2 font-medium text-gray-900 mt-1">{productName}</h3>
+                <p className="text-gray-700 text-sm md:text-base">Tk {productPrice.toLocaleString()}</p>
 
                 {/* Color Options */}
                 <div className="flex items-center justify-center gap-2 mt-2">
