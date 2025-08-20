@@ -8,7 +8,7 @@ const PageHero = ({ img, title, subtitle }) => {
     return (
         <div>
             <div
-                className="hero min-h-[50vh] "
+                className="hero min-h-[40vh] "
                 style={{
                     backgroundImage: `url(${img})`,
                 }}>
@@ -18,10 +18,10 @@ const PageHero = ({ img, title, subtitle }) => {
                     <div className="max-w-md">
                         <h2 data-aos="fade-up"
                             data-aos-duration="3000" 
-                            className="mb-3 text-5xl font-bold">{title}</h2>
+                            className="mb-3 md:text-3xl text-2xl lg:text-4xl font-bold">{title}</h2>
                         <h2 data-aos="fade-up"
                             data-aos-duration="3000"
-                             className='flex justify-center items-center gap-4 mt-6'>{title} <FaChevronRight /> <span className='text-green-400 font-bold'>{subtitle}</span></h2>
+                             className='flex text-sm md:text-md justify-center items-center gap-4 mt-3 lg:mt-6'>{title} <FaChevronRight /> <span className='text-green-400 font-bold'>{subtitle}</span></h2>
                     </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@ const Review = () => {
 
     return (
         <div className="container mx-auto lg:py-16 py-12 px-4">
-            <h2 className="text-4xl font-bold text-center mb-10">FROM OUR CUSTOMERS</h2>
+            <h2 className="text-center section-heading mb-4">FROM OUR CUSTOMERS</h2>
 
             <Swiper
                 navigation={true}
@@ -33,14 +33,14 @@ const Review = () => {
             >
                 {data.map((review, index) => (
                     <SwiperSlide key={index}>
-                        <div className="bg-white p-6 rounded-lg shadow-lg h-full flex flex-col items-center text-center">
+                        <div className="bg-white p-6  h-full flex flex-col items-center text-center">
                             <img
                                 src={review.photo}
                                 alt={review.name}
                                 className="w-20 h-20 rounded-full object-cover mb-4"
                             />
-                            <h3 className="text-lg font-semibold">{review.name}</h3>
-                            <p className="text-sm text-gray-500 mb-1">{review.country}</p>
+                            <h3 className="lg:text-lg md:text-base text-sm font-semibold">{review.name}</h3>
+                            <p className="lg:text-lg text-sm  text-gray-500 mb-1">{review.country}</p>
                             <div className="flex justify-center mb-2">
                                 {[...Array(5)].map((_, i) => (
                                     <FaStar
@@ -51,7 +51,7 @@ const Review = () => {
                                     />
                                 ))}
                             </div>
-                            <p className="text-gray-700 text-sm">{review.description}</p>
+                            <p className="text-gray-500 lg:text-sm sm:text-xs text-[10px]">{review.description}</p>
                         </div>
                     </SwiperSlide>
                 ))}

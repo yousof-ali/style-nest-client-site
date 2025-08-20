@@ -10,12 +10,12 @@ AOS.init()
 const FeaturedProduct = () => {
     return (
         <div className="bg-base-200 py-8 md:py-32">
-            <div className="container mx-auto max-w-7xl flex flex-col-reverse lg:flex-row items-center justify-between px-4 gap-12">
+            <div className="container mx-auto max-w-7xl flex flex-col-reverse lg:flex-row lg:items-center  justify-between px-4 gap-12">
 
                 <div className="flex-1">
-                    <h3 className="text-sm font-semibold uppercase tracking-widest text-gray-500">FEATURED PRODUCT</h3>
-                    <h2 className="text-4xl font-bold my-6">Discover Style in Every Stitch</h2>
-                    <p className="text-gray-600 leading-relaxed">
+                    <h3 className="section-label text-xs md:text-base">FEATURED PRODUCT</h3>
+                    <h2 className="section-heading">Discover Style in Every Stitch</h2>
+                    <p className="section-desc">
                         Clothing is more than just a necessity — it’s a powerful expression of individuality, culture, and lifestyle. From the materials carefully chosen to the designs thoughtfully crafted, every piece of clothing tells a story. It reflects personal style, adapts to daily demands, and speaks volumes without saying a word.In today’s world, fashion blends tradition with innovation, combining timeless craftsmanship with modern technology.
                     </p>
                     <button className="btn btn-outline btn-success mt-6 hover:text-white">

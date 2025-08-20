@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 import ProductCard from "../../Components/ProductCard";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa6";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { Swiper, SwiperSlide } from "swiper/react"; 
-import { FreeMode, Pagination } from "swiper/modules";
+import { FreeMode, Navigation, Pagination } from "swiper/modules";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const TopTrending = () => {
   const [toptrending, setTopTrending] = useState([]);
@@ -47,13 +49,17 @@ const TopTrending = () => {
       </div>
 
       {/* ✅ Use Swiper only (removed grid duplication) */}
-      <div className="mt-8 px-4">
+      <div className="mt-8 px-4 relative">
         <Swiper
           slidesPerView={1}
           spaceBetween={10}
           freeMode={true}
           pagination={{ clickable: true }}
-          modules={[FreeMode, Pagination]}
+           navigation={{
+            nextEl: ".custom-next",
+            prevEl: ".custom-prev",
+          }}
+          modules={[FreeMode, Pagination,Navigation]}
           breakpoints={{
             640: { slidesPerView: 1 },
             768: { slidesPerView: 2 },
@@ -67,6 +73,13 @@ const TopTrending = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+
+        <button className="custom-prev cursor-pointer absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md md:p-5 p-3 rounded-full hover:bg-green-500">
+          <FaChevronLeft className="text-gray-700" />
+        </button>
+        <button className="custom-next cursor-pointer  absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md md:p-5 p-3 rounded-full  hover:bg-green-500">
+          <FaChevronRight className="text-gray-700" />
+        </button>
       </div>
     </div>
   );

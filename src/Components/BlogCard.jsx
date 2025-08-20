@@ -18,9 +18,9 @@ const BlogCard = ({ data }) => {
 
             {/* Static Text Content */}
             <div className="p-4 ">
-                <h2 className="text-lg font-bold text-gray-900">{title}</h2>
-                <p className="text-gray-600 text-sm mt-2">{details?.slice(0, 100)}...</p>
-                <div className="flex items-center justify-between text-sm text-gray-500 mt-4">
+                <h2 className="lg:text-lg md:text-base smtext-base text-sm font-medium text-gray-900">{title}</h2>
+                <p className="mt-2 sm:text-sm  pb-4 text-gray-500 text-[10px] ">{details?.slice(0, 100)}...</p>
+                <div className="flex items-center justify-between text-xs md:text-sm text-gray-500 mt-4">
                     <p className="flex items-center gap-1"><IoPerson /> {postOwner}</p>
                     <p className="flex items-center gap-1"><MdOutlineDateRange /> {date}</p>
                 </div>

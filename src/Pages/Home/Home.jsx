@@ -12,10 +12,12 @@ const Home = () => {
             <Sliders/>
             <Category/>
             <TopTrending/>
-            {/* 
-            <FeaturedProduct></FeaturedProduct>
-            <FromOurBlog></FromOurBlog>
-            <Review></Review> */}
+            <FeaturedProduct/>
+            <FromOurBlog/>
+            
+            
+            
+            <Review/> 
         </div>
     );
 };
